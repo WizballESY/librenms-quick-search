@@ -8,9 +8,25 @@ class QuickSearchSettingsService
 {
     public const PACKAGE_PLUGIN_NAME = 'quick-search';
 
+    public function plugin(): ?Plugin
+    {
+        return Plugin::where('plugin_name', self::PACKAGE_PLUGIN_NAME)->first();
+    }
+
+    public function pluginActive(): bool
+    {
+        $plugin = $this->plugin();
+
+        if (! $plugin) {
+            return false;
+        }
+
+        return (bool) ($plugin->plugin_active ?? false);
+    }
+
     public function settings(): array
     {
-        $plugin = Plugin::where('plugin_name', self::PACKAGE_PLUGIN_NAME)->first();
+        $plugin = $this->plugin();
 
         $settings = $plugin ? ($plugin->settings ?? []) : [];
 

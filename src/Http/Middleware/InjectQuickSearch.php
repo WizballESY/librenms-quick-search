@@ -17,6 +17,10 @@ class InjectQuickSearch
     {
         $response = $next($request);
 
+        if (! $this->settings->pluginActive()) {
+            return $response;
+        }
+
         $settings = $this->settings->settings();
 
         if (! $this->settings->enabled($settings)) {

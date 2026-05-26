@@ -22,6 +22,12 @@ class QuickSearchServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'quick-search');
 
+        /*
+         * Compatibility view path for LibreNMS plugin settings pages.
+         * LibreNMS may request quick-search::resources.views.settings.
+         */
+        $this->loadViewsFrom(__DIR__ . '/..', 'quick-search');
+
         $router->pushMiddlewareToGroup('web', InjectQuickSearch::class);
 
         $pluginManager = $this->app->make(PluginManagerInterface::class);
