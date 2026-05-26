@@ -40,7 +40,7 @@
         }
 
         const $search = $(`
-            <div class="wizball-quick-search-wrapper" style="display:inline-flex;align-items:center;margin-left:12px;margin-right:8px;margin-bottom:6px;">
+            <div class="wizball-quick-search-wrapper pull-left" style="display:inline-flex;align-items:center;margin-right:12px;margin-bottom:6px;">
                 <div class="input-group input-group-sm" style="width:260px;">
                     <span class="input-group-addon" title="Quick search">
                         <i class="fa fa-search" aria-hidden="true"></i>
