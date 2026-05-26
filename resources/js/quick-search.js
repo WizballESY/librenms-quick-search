@@ -21,6 +21,18 @@
             .replaceAll("'", '&#039;');
     }
 
+    function focusSearchInput($search) {
+        const active = document.activeElement;
+
+        if (active && ['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(active.tagName)) {
+            return;
+        }
+
+        setTimeout(() => {
+            $search.find('input').trigger('focus').trigger('select');
+        }, 100);
+    }
+
     function createSearchElement(options) {
         const value = options.value || '';
         const placeholder = options.placeholder || 'Search';
@@ -102,6 +114,8 @@
                 runSearch('');
             }
         });
+
+        focusSearchInput($search);
     }
 
     function isDevicePortsDetailPage() {
@@ -235,6 +249,8 @@
         });
 
         $search.insertBefore($filterBar);
+
+        focusSearchInput($search);
     }
 
     function init() {
