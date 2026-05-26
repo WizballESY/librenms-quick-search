@@ -5,18 +5,25 @@ namespace WizballEsy\LibreNmsQuickSearch\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use WizballEsy\LibreNmsQuickSearch\Services\QuickSearchSettingsService;
 
 class InjectQuickSearch
 {
+    public function __construct(private readonly QuickSearchSettingsService $settings)
+    {
+    }
+
     public function handle(Request $request, Closure $next): Response
     {
         $response = $next($request);
 
-        if (! config('quick-search.enabled', true)) {
+        $settings = $this->settings->settings();
+
+        if (! $this->settings->enabled($settings)) {
             return $response;
         }
 
-        if (! config('quick-search.devices.enabled', true)) {
+        if (! $this->settings->deviceListEnabled($settings)) {
             return $response;
         }
 
