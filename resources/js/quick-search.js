@@ -56,10 +56,10 @@
             </div>
         `);
 
-        const $firstToolbarItem = $menu.children().first();
+        const $filterWrapper = $menu.find('.pull-left, [x-data*="filterBarComponent"]').first();
 
-        if ($firstToolbarItem.length) {
-            $search.insertBefore($firstToolbarItem);
+        if ($filterWrapper.length) {
+            $search.insertBefore($filterWrapper);
         } else {
             $menu.prepend($search);
         }
