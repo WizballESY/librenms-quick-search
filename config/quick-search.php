@@ -5,6 +5,6 @@ return [
 
     'devices' => [
         'enabled' => true,
-        'placeholder' => 'Search devices',
+        'placeholder' => 'Search',
     ],
 ];

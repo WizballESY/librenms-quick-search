@@ -1,11 +1,20 @@
 # LibreNMS Quick Search
 
-Adds lightweight quick search fields to selected LibreNMS pages.
+Experimental LibreNMS plugin package that adds lightweight quick search fields to selected LibreNMS pages.
 
-Initial alpha scope:
+## Current experimental scope
 
-- Device list quick search
+- Adds a quick search field to the LibreNMS device list.
+- Uses the existing LibreNMS Bootgrid search on the device table.
+- Does not replace the built-in LibreNMS filter system.
+- Currently targets the device list only.
 
 ## Status
 
-Alpha release. Test carefully before production use.
+Experimental alpha release. Test carefully before production use.
+
+This package is under early development and may need adjustments if LibreNMS changes the device list table, selectors, or JavaScript behavior.
+
+## Notes
+
+More LibreNMS pages may be added later if the approach proves stable.
