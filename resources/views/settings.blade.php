@@ -1,5 +1,18 @@
 <div style="margin: 15px; max-width: 760px;">
-    <h2 style="margin-top: 0;">Quick Search Settings</h2>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px;">
+        <h2 style="margin: 0;">
+            Quick Search Settings
+            @include('quick-search::partials.version-badge')
+        </h2>
+
+        <a href="https://github.com/WizballESY/librenms-quick-search"
+           class="btn btn-primary btn-sm"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="Quick Search on GitHub">
+            <i class="fa fa-github"></i> GitHub
+        </a>
+    </div>
 
     <div class="alert alert-warning" style="font-size: 12px;">
         <strong>Experimental alpha:</strong>
@@ -65,4 +78,8 @@
             <i class="fa fa-save"></i> Save settings
         </button>
     </form>
+
+    <hr>
+
+    @include('quick-search::partials.footer')
 </div>
