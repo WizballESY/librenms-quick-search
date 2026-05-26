@@ -41,14 +41,15 @@
 
         const $search = $(`
             <div class="wizball-quick-search-wrapper pull-left" style="display:inline-flex;align-items:center;margin-right:12px;margin-bottom:6px;">
-                <div class="input-group input-group-sm" style="width:260px;">
-                    <span class="input-group-addon" title="Quick search">
+                <div class="input-group input-group-sm" style="width:260px;height:34px;">
+                    <span class="input-group-addon" title="Quick search" style="height:34px;line-height:20px;">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </span>
                     <input
                         id="${INPUT_ID}"
                         type="search"
                         class="form-control"
+                        style="height:34px;"
                         placeholder="Search"
                         autocomplete="off"
                         aria-label="Search">
