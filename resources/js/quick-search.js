@@ -56,7 +56,13 @@
             </div>
         `);
 
-        $menu.prepend($search);
+        const $firstToolbarItem = $menu.children().first();
+
+        if ($firstToolbarItem.length) {
+            $search.insertBefore($firstToolbarItem);
+        } else {
+            $menu.prepend($search);
+        }
 
         const runSearch = debounce(function (value) {
             $grid.bootgrid('search', value);
