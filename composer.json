@@ -1,0 +1,21 @@
+{
+    "name": "wizballesy/librenms-quick-search",
+    "description": "Adds lightweight quick search fields to selected LibreNMS pages.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "WizballEsy\\LibreNmsQuickSearch\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "WizballEsy\\LibreNmsQuickSearch\\QuickSearchServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "php": ">=8.2"
+    }
+}
