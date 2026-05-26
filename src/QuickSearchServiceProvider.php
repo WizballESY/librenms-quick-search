@@ -2,8 +2,9 @@
 
 namespace WizballEsy\LibreNmsQuickSearch;
 
-use Illuminate\Support\Facades\Blade;
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use WizballEsy\LibreNmsQuickSearch\Http\Middleware\InjectQuickSearch;
 
 class QuickSearchServiceProvider extends ServiceProvider
 {
@@ -12,12 +13,10 @@ class QuickSearchServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/quick-search.php', 'quick-search');
     }
 
-    public function boot(): void
+    public function boot(Router $router): void
     {
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'quick-search');
 
-        Blade::directive('quickSearchVersion', function () {
-            return "<?php echo 'librenms-quick-search alpha'; ?>";
-        });
+        $router->pushMiddlewareToGroup('web', InjectQuickSearch::class);
     }
 }
