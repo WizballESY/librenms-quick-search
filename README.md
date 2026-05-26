@@ -11,10 +11,16 @@ Experimental LibreNMS plugin package that adds lightweight quick search fields t
 
 ## Status
 
-Experimental alpha release. Test carefully before production use.
+Experimental alpha package.
 
-This package is under early development and may need adjustments if LibreNMS changes the device list table, selectors, or JavaScript behavior.
+**Installation is not currently recommended.**
+
+This package is under early development. The quick search JavaScript has been tested manually in a browser console, but the package installation flow has not yet been safely validated for LibreNMS production or test systems.
+
+Do not install this package on an active LibreNMS instance unless you are deliberately testing it and have a rollback plan.
 
 ## Notes
 
 More LibreNMS pages may be added later if the approach proves stable.
+
+The first goal is to validate a safe installation method before recommending normal use.
