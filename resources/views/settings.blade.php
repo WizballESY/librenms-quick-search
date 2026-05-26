@@ -1,4 +1,11 @@
-<div style="margin: 15px; max-width: 760px;">
+@php
+    $quickSearchSettings = $quickSearchSettings ?? [
+        'enabled' => true,
+        'device_list_enabled' => true,
+    ];
+@endphp
+
+<div class="quick-search-plugin" style="margin: 15px; max-width: 760px;">
     <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px;">
         <h2 style="margin: 0;">
             Quick Search Settings
@@ -14,14 +21,14 @@
         </a>
     </div>
 
+    <p class="text-muted">
+        Control where Quick Search is enabled. The current alpha only supports the LibreNMS device list.
+    </p>
+
     <div class="alert alert-warning" style="font-size: 12px;">
         <strong>Experimental alpha:</strong>
         This plugin is under early development. Test carefully before using it broadly.
     </div>
-
-    <p class="text-muted">
-        Control where Quick Search is enabled. The current alpha only supports the LibreNMS device list.
-    </p>
 
     <form method="post" style="margin-top: 15px;">
         @csrf
@@ -39,7 +46,7 @@
                         type="checkbox"
                         name="settings[enabled]"
                         value="1"
-                        @if ($settings['enabled'] ?? true) checked @endif
+                        @if ($quickSearchSettings['enabled']) checked @endif
                     >
                     Enable Quick Search
                 </label>
@@ -63,7 +70,7 @@
                         type="checkbox"
                         name="settings[device_list_enabled]"
                         value="1"
-                        @if ($settings['device_list_enabled'] ?? true) checked @endif
+                        @if ($quickSearchSettings['device_list_enabled']) checked @endif
                     >
                     Enable quick search on the device list
                 </label>

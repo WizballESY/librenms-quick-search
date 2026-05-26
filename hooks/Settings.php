@@ -13,11 +13,19 @@ class Settings extends SettingsHook
 
     public function data(array $settings = []): array
     {
+        $quickSearchSettings = [
+            'enabled' => $this->boolSetting($settings, 'enabled', true),
+            'device_list_enabled' => $this->boolSetting($settings, 'device_list_enabled', true),
+        ];
+
         return [
-            'settings' => [
-                'enabled' => $this->boolSetting($settings, 'enabled', true),
-                'device_list_enabled' => $this->boolSetting($settings, 'device_list_enabled', true),
-            ],
+            'quickSearchSettings' => $quickSearchSettings,
+
+            /*
+             * Keep a normalized settings array available too, but avoid relying
+             * on raw saved values in the Blade view.
+             */
+            'settings' => array_merge($settings, $quickSearchSettings),
         ];
     }
 
@@ -28,6 +36,10 @@ class Settings extends SettingsHook
         }
 
         $value = $settings[$key];
+
+        if (is_array($value)) {
+            $value = end($value);
+        }
 
         if (is_bool($value)) {
             return $value;
