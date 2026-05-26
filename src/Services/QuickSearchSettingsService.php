@@ -43,6 +43,11 @@ class QuickSearchSettingsService
         return $this->boolSetting($settings ?? $this->settings(), 'device_list_enabled', true);
     }
 
+    public function devicePortsDetailEnabled(?array $settings = null): bool
+    {
+        return $this->boolSetting($settings ?? $this->settings(), 'device_ports_detail_enabled', true);
+    }
+
     private function boolSetting(array $settings, string $key, bool $default): bool
     {
         if (! array_key_exists($key, $settings)) {

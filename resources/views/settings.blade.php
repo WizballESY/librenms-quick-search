@@ -2,6 +2,7 @@
     $quickSearchSettings = $quickSearchSettings ?? [
         'enabled' => true,
         'device_list_enabled' => true,
+        'device_ports_detail_enabled' => true,
     ];
 @endphp
 
@@ -76,7 +77,33 @@
                 </label>
 
                 <p class="text-muted" style="margin-bottom: 0;">
-                    Adds a Search field next to the LibreNMS Filter button on the device list.
+                    Adds a live Search field next to the LibreNMS Filter button on the device list.
+                </p>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Device ports detail</strong>
+            </div>
+
+            <div class="panel-body">
+                <input type="hidden" name="settings[device_ports_detail_enabled]" value="0">
+
+                <label style="font-weight: normal;">
+                    <input
+                        type="checkbox"
+                        name="settings[device_ports_detail_enabled]"
+                        value="1"
+                        @if ($quickSearchSettings['device_ports_detail_enabled']) checked @endif
+                    >
+                    Enable quick search on device ports detail
+                </label>
+
+                <p class="text-muted" style="margin-bottom: 0;">
+                    Adds a Search ports field on the device ports detail page. This uses LibreNMS' own
+                    <code>filter[search][contains]</code> filter and searches port name, alias and description.
+                    Press Enter or click the search icon to apply.
                 </p>
             </div>
         </div>

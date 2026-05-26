@@ -16,6 +16,7 @@ class Settings extends SettingsHook
         $quickSearchSettings = [
             'enabled' => $this->boolSetting($settings, 'enabled', true),
             'device_list_enabled' => $this->boolSetting($settings, 'device_list_enabled', true),
+            'device_ports_detail_enabled' => $this->boolSetting($settings, 'device_ports_detail_enabled', true),
         ];
 
         return [

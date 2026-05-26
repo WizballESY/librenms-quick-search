@@ -27,11 +27,18 @@ class InjectQuickSearch
             return $response;
         }
 
-        if (! $this->settings->deviceListEnabled($settings)) {
+        $isDeviceList = preg_match('#^devices/?$#', $request->path()) === 1;
+        $isDevicePortsDetail = preg_match('#^device/[^/]+/ports(?:/(?:basic|detail))?/?$#', $request->path()) === 1;
+
+        if ($isDeviceList && ! $this->settings->deviceListEnabled($settings)) {
             return $response;
         }
 
-        if (! $request->is('devices')) {
+        if ($isDevicePortsDetail && ! $this->settings->devicePortsDetailEnabled($settings)) {
+            return $response;
+        }
+
+        if (! $isDeviceList && ! $isDevicePortsDetail) {
             return $response;
         }
 
